@@ -26,5 +26,8 @@ Route::get('/addOutdoorForm', [App\Http\Controllers\OutdoorController::class, 'a
 Route::post('/insertOutdoor', [App\Http\Controllers\OutdoorController::class, 'store'])->name('insert_outdoor');
 Route::get('/outdoorsGrid', [App\Http\Controllers\OutdoorController::class, 'index'])->name('outdoor_grid');
 Route::post('/deleteOutdoor/{id}', [App\Http\Controllers\OutdoorController::class, 'delete'])->name('delete_outdoor');
+
 Route::get('/editFormOutdoor/{id}', [App\Http\Controllers\OutdoorController::class, 'editForm'])->name('edit_outdoor');
+
+Route::get('/viewFormOutdoor/{id}', [App\Http\Controllers\OutdoorController::class, 'viewForm'])->name('view_outdoor');
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Outdoor;
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Storage;
 
 class OutdoorController extends Controller
 {
@@ -33,6 +34,16 @@ class OutdoorController extends Controller
         ]);
     }
 
+    public function viewForm($id)
+    {
+        $painel = Outdoor::find($id);
+        //dd($painel->image_url);
+        //dd(json_encode($painel->image_url));
+        return view('outdoors.OutdoorViewForm',[
+            'painel' => $painel,
+        ]);
+    }
+
     public function store(Request $request)
     {
         $this->validaForm($request);
@@ -52,6 +63,23 @@ class OutdoorController extends Controller
             $painel->ponto_referencia = $request->ponto_referencia;
             $painel->latitude = $request->latitude;
             $painel->longitude = $request->longitude;
+
+            $painel->save();
+
+            $file = base64_decode($request->image);
+            $folder = $painel->id."/";
+            $safeName = $painel->id.'.'.'png';
+            $destinationPath = Storage::disk('outdoorImages')->path('');
+
+            if (!is_dir($destinationPath. $folder)) {
+                // dir doesn't exist, make it
+                mkdir($destinationPath. $folder);
+            }
+
+            file_put_contents($destinationPath.$folder.$safeName, $file);
+
+            $painel->image_url = 'outdoorImages/'.$folder.$safeName;
+
             $painel->save();
 
         } catch (Exception $e) {
@@ -96,6 +124,7 @@ class OutdoorController extends Controller
             'ponto_referencia.required' => 'O Ponto de referência deve ser informado',
             'latitude.required' => 'A Latitude deve ser informada',
             'longitude.required' => 'A Longitude deve ser informada',
+            'image.required' => 'A Imagem deve ser informada',
         ];
 
 
@@ -108,6 +137,7 @@ class OutdoorController extends Controller
             'ponto_referencia' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
+            'image'  => 'required|string',
         ], $customMessages);
 
         

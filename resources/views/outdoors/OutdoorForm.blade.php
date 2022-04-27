@@ -54,17 +54,49 @@
                 <input type="text" class="form-control" id="long">
             </div>
         </div>
+        <div class="row">
+            <div class="card-body col-md-4">
+                <label class="form-label">Imagem</label>
+                <input type="file" id="imageDialog" name="image" class="form-control">
+            </div>
 
-        <button id="btn-add-edit"  class="btn btn-primary float-right" style="margin-top: 40px;">
-            <i class="fa fa-btn fa-envelope"></i>
-            Salvar
-        </button>
+            <div class="card-body col-md-8">
+                <button id="btn-add-edit"  class="btn btn-primary float-right" style="margin-top: 40px;">
+                    <i class="fa fa-btn fa-envelope"></i>
+                    Salvar
+                </button>
+            </div>
+        </div>
     </div>
 
 
     <script>
     $(document).ready(function () 
     {
+        let base64String = "";
+  
+        function imageUploaded() {
+            var file = document.querySelector(
+                'input[type=file]')['files'][0];
+        
+            var reader = new FileReader();
+            console.log("next");
+            
+            reader.onload = function () {
+                base64String = reader.result.replace("data:", "")
+                    .replace(/^.+,/, "");
+        
+                imageBase64Stringsep = base64String;
+        
+                // alert(imageBase64Stringsep);
+                console.log(base64String);
+            }
+            reader.readAsDataURL(file);
+        }
+
+        $('#imageDialog').on('change', function() {
+            imageUploaded();
+        })
         
         $('#btn-add-edit').on('click', function(){
             identificacao = $('#identificacao').val();
@@ -75,7 +107,8 @@
             ponto_referencia = $('#referencia').val();
             latitude = $('#lat').val();
             longitude = $('#long').val();
-            url = {{route('insert_outdoor')}};
+            files = $('#imageDialog')[0].files;
+            url = "{{route('insert_outdoor')}}";
             if(identificacao == 0)
             {
                 return alert('Informe a Identificação');
@@ -108,6 +141,10 @@
             {
                 return alert('Informe a Longitude');
             }
+            if(base64String == '')
+            {
+                return alert('Selecione uma Imagem');
+            }
             @if(isset($painel))
             {
                 id = '{{$painel->id}}'
@@ -124,7 +161,7 @@
             });
             $.ajax({
                 method: "POST",
-                url: url, 
+                url: url,
                 data:{
                     id:id,
                     identificacao:identificacao,
@@ -134,12 +171,13 @@
                     dimensao_lona: dimensao_lona,
                     ponto_referencia: ponto_referencia,
                     latitude: latitude,
-                    longitude: longitude
+                    longitude: longitude,
+                    image: base64String,
                 },
             success: function(resposta){
                 if (resposta.success){
                     alert(resposta.message, true);
-                    window.location.href = {{url('outdoorsGrid')}};
+                    window.location.href = "{{url('outdoorsGrid')}}";
                 }else{
                     alert(JSON.stringify(resposta));
                 }

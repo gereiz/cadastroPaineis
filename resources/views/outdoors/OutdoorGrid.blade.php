@@ -12,6 +12,7 @@
                 <div class="row">
                     <h5 class="card-title">{{$p->identificacao}}</h5>
                     <div class="col-md-12 text-right">
+                        <a role="button" href="/viewFormOutdoor/{{$p->id}}" type="button" class="btn btn-secondary edit">Visualizar</a>
                         <a role="button" href="/editFormOutdoor/{{$p->id}}" type="button" class="btn btn-primary edit">Editar</a>
                         <button type="button" value="{{$p->id}}" class="btn btn-danger delete">Excluir</button>
                     </div>
