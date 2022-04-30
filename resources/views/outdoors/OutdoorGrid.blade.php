@@ -11,14 +11,20 @@
             <div class="card-body">
                 <div class="row">
                     <h5 class="card-title">{{$p->identificacao}}</h5>
+                    
+                </div>
+                <div class="row">
+                    <img src="{{asset('storage/'.$p->image_url)}}" alt="" style="width:15%;">
                     <div class="col-md-12 text-right">
-                        <a role="button" href="/viewFormOutdoor/{{$p->id}}" type="button" class="btn btn-secondary edit">Visualizar</a>
-                        <a role="button" href="/editFormOutdoor/{{$p->id}}" type="button" class="btn btn-primary edit">Editar</a>
+                        <a role="button" href="{{url('viewFormOutdoor')}}/{{$p->id}}" type="button" class="btn btn-secondary edit">Visualizar</a>
+                        <a role="button" href="{{url('editFormOutdoor')}}/{{$p->id}}" type="button" class="btn btn-primary edit">Editar</a>
                         <button type="button" value="{{$p->id}}" class="btn btn-danger delete">Excluir</button>
                     </div>
                 </div>
                 <div class="row">
                     <p class="card-text">{{$p->localizacao}}</p>
+                    
+ 
                 </div>
             </div>
         </div>

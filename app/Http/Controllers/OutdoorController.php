@@ -35,7 +35,7 @@ class OutdoorController extends Controller
     }
 
     public function viewForm($id)
-    {
+    { 
         $painel = Outdoor::find($id);
         //dd($painel->image_url);
         //dd(json_encode($painel->image_url));

@@ -23,6 +23,24 @@
     <!-- Links -->
     <ul class="sidenav-inner{{ empty($layout_sidenav_horizontal) ? ' py-1' : '' }}">
 
+
+        <!-- Pessoas -->
+        <li class="sidenav-item{{ strpos($routeName, 'dashboards.') === 0 ? ' active open' : '' }}">
+            <a href="#" class="sidenav-link sidenav-toggle"><i class="sidenav-icon ion ion-md-person-add"></i><div>Pessoas</div></a>
+            
+            <ul class="sidenav-menu">
+                <li class="sidenav-item{{ $routeName == 'dashboards.dashboard-1' ? ' active' : '' }}">
+                    <a href="http://localhost/sgep/public/home" class="sidenav-link"><div>Cadastro de Usuários</div></a>
+                </li>
+                <li class="sidenav-item{{ $routeName == 'cadastra.cliente' ? ' active' : '' }}">
+                    <a href="#" class="sidenav-link"><div>Cadastro de Clientes</div></a>
+                </li>
+                <li class="sidenav-item{{ $routeName == 'dashboards.dashboard-3' ? ' active' : '' }}">
+                    <a href="#" class="sidenav-link"><div>Tutorial</div></a>
+                </li>
+            </ul>
+        </li>
+
         <!-- Painéis -->
         <li class="sidenav-item active open">
             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle"><i class="sidenav-icon ion ion-md-photos"></i><div>Painéis</div></a>

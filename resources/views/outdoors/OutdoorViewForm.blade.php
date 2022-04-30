@@ -11,41 +11,41 @@
     <div class="card">
 
         <div class="card-body col-md-12" style="text-align: center">
-            <img id="imageShow" src="" alt="imagem do painel" title="imagem do painel" style="max-width:450px;">
+            <img id="imageShow" src="{{asset('storage/'.$painel->image_url)}}" alt="imagem do painel" title="imagem do painel" style="max-width:450px;">
         </div>
         <div class="row">
             <div class="card-body col-md-4">
-                <label class="form-label">Identificação</label>
-                <input type="text" class="form-control" id="identificacao">
+                <label class="form-label">Identificação</label> 
+                <input type="text" class="form-control" id="identificacao" disabled>
             </div>
 
             <div class="card-body col-md-8">
                 <label class="form-label">Localização</label>
-                <input type="text" class="form-control" id="localizacao">
+                <input type="text" class="form-control" id="localizacao" disabled>
             </div>
         </div>
 
         <div class="row">
             <div class="card-body col-md-4">
                 <label class="form-label">Posição</label>
-                <input type="text" class="form-control" id="posicao">
+                <input type="text" class="form-control" id="posicao" disabled>
             </div>
 
             <div class="card-body col-md-4">
                 <label class="form-label">Dimensão</label>
-                <input type="text" class="form-control" id="dimensao">
+                <input type="text" class="form-control" id="dimensao" disabled>
             </div>
 
             <div class="card-body col-md-4">
                 <label class="form-label">Dimensão da Lona</label>
-                <input type="text" class="form-control" id="dimensao_lona">
+                <input type="text" class="form-control" id="dimensao_lona" disabled>
             </div>
         </div>
 
         <div class="row">
             <div class="card-body col-md-4">
                 <label class="form-label">Ponto de Referência</label>
-                <input type="text" class="form-control" id="referencia">
+                <input type="text" class="form-control" id="referencia" disabled>
             </div>
 
             <div class="card-body col-md-8" style="margin-top:30px;">
@@ -67,7 +67,7 @@
             $('#dimensao_lona').val('{{$painel->dimensao_lona}}');
             $('#referencia').val('{{$painel->ponto_referencia}}');
             $("#mapsLink").attr("href", "https://maps.google.com/?q=" + '{{$painel->latitude}}' + ',' + '{{$painel->longitude}}');
-            $("#imageShow").attr("src", "/storage/{{$painel->image_url}}");
+           // $("#imageShow").attr("src", "/storage/{{$painel->image_url}}");
         @endif
     });
     </script>
