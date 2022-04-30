@@ -31,3 +31,7 @@ Route::get('/editFormOutdoor/{id}', [App\Http\Controllers\OutdoorController::cla
 
 Route::get('/viewFormOutdoor/{id}', [App\Http\Controllers\OutdoorController::class, 'viewForm'])->name('view_outdoor');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

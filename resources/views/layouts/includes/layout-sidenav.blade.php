@@ -33,7 +33,7 @@
                     <a href="https://sgepequipe.com/home" class="sidenav-link"><div>Cadastro de Usuários</div></a>
                 </li>
                 <li class="sidenav-item{{ $routeName == 'cadastra.cliente' ? ' active' : '' }}">
-                    <a href="#" class="sidenav-link"><div>Cadastro de Clientes</div></a>
+                    <a href="https://sgepequipe.com/home" class="sidenav-link"><div>Cadastro de Clientes</div></a>
                 </li>
                 <li class="sidenav-item{{ $routeName == 'dashboards.dashboard-3' ? ' active' : '' }}">
                     <a href="#" class="sidenav-link"><div>Tutorial</div></a>
