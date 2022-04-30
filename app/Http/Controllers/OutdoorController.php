@@ -64,7 +64,7 @@ class OutdoorController extends Controller
             $painel->latitude = $request->latitude;
             $painel->longitude = $request->longitude;
 
-            $painel->save();
+            $painel->save(); 
 
             $file = base64_decode($request->image);
             $folder = $painel->id."/";

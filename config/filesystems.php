@@ -44,7 +44,7 @@ return [
 
         'outdoorImages' => [
             'driver' => 'local',
-            'root' => storage_path('app\\public\\outdoorImages'),
+            'root' => storage_path('/outdoorImages'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

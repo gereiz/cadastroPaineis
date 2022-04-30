@@ -108,8 +108,8 @@
             latitude = $('#lat').val();
             longitude = $('#long').val();
             files = $('#imageDialog')[0].files;
-            url = "{{route('insert_outdoor')}}";
-            if(identificacao == 0)
+            url = "{{route('insert_outdoor')}}";    
+            if(identificacao == 0) 
             {
                 return alert('Informe a Identificação');
             }
