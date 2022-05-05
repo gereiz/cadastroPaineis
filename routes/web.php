@@ -20,8 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\OutdoorController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\OutdoorController::class, 'index'])->name('home');
+
 
 Route::get('/addOutdoorForm', [App\Http\Controllers\OutdoorController::class, 'addForm'])->name('add_form_outdoor');
 Route::post('/insertOutdoor', [App\Http\Controllers\OutdoorController::class, 'store'])->name('insert_outdoor');
